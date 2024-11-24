@@ -3,26 +3,61 @@ Setting Up MySQL Server and Configuring Remote Access
 
 ```
 sudo apt update
-sudo apt install mysql-server
+sudo apt install mysql-server -y
 ```
 2. Access MySQL as Root:
 ```
 sudo mysql -u root
 ```
+- When we are Running next time we need to give command: 
+ ```
+ sudo mysql -u root -p
+ ```
 
 3. Set Root User Password:
 ```
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Test@123';
 ```
+- After Running above command some Change to be done backend.
 ```
 FLUSH PRIVILEGES;
 ```
 4. Create a Database:
-
 ```
 CREATE DATABASE bankappdb;
 ```
+1. If case we want to View databases inside:
+ - show databases;
+
+ #### Output:
+ Database           |
++--------------------+
+| bankappdb          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys 
+
+2. you wamt to see the bankappdb date files.
+- USE bankappdb;   # O/P: Database changed
+- show tables;  # Output: empty set
 exit;
+
+
+#_____________________#
+## Install Maven and java
+```
+sudo apt install openjdk-17-jdk-headless -y
+sudo apt install maven -y
+
+```
+1. mvn package
+
+2. Next change dir to traget ( cd traget/)
+  - java -jar bankapp-0.0.1-SNAPSHOT.jar  # It will created on temper tomcat server and run on port 8080
+3. Take IP Address and open brower with the Port 8080
+- Public IPv4 address:8008
+
 5. Modify MySQL Configuration for Remote Access:
 o Open the MySQL configuration file:
 
